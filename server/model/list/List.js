@@ -23,8 +23,8 @@ class List {
         return this.getQueryPromise('update list set action = ? where id = ?', [action, id])
     }
 
-    static createAction(action) {
-        return this.getQueryPromise('insert into list (action) value (?)', [action])
+    static createAction(action, completed) {
+        return this.getQueryPromise('insert into list (action, completed) value (?,?)', [action, completed])
     }
 
     static deleteAction(id) {

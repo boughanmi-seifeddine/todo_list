@@ -42,7 +42,7 @@ class ListController {
     }
 
     static create(req, res) {
-        listModel.createAction(JSON.parse(req).action).then((data) => {
+        listModel.createAction(JSON.parse(req).action, JSON.parse(req).completed).then((data) => {
             res.statusCode = 201;
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({

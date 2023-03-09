@@ -1,5 +1,5 @@
 # ************************* for react *************************
-.idea/
+.idea
 .vscode/
 node_modules/
 build/
