@@ -1,8 +1,8 @@
 {
   "name": "todo-list",
   "version": "0.1.0",
+  "proxy": "http://127.0.0.1:3001",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -18,7 +18,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client": "npm start",
+    "server": "npm start --prefix ../server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [

@@ -23,7 +23,7 @@ class ListController {
     }
 
     static update(req, res, id) {
-        listModel.updateAction(JSON.parse(req).action, id).then((data) => {
+        listModel.updateAction([JSON.parse(req).action || null, JSON.parse(req).completed] || null, id).then((data) => {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({
