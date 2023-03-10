@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js"
+    "client": "cd ../client && npm start",
+    "start": "nodemon index.js && cd ../client && npm start",
+    "dev": "concurrently --prefix \"{time}\" -n 'server,client' -c 'red,green' \"npm start\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.2",
+    "concurrently": "^7.6.0",
     "mysql": "^2.18.1"
   }
 }

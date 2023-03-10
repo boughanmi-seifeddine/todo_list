@@ -19,11 +19,13 @@ class List {
         return this.getQueryPromise('select * from list where id=?',[id])
     }
 
-    static updateAction(action, id) {
-        return this.getQueryPromise('update list set action = ? where id = ?', [action, id])
+    static updateAction(fields, id) {
+        if (fields[0] && !fields[1]) return this.getQueryPromise('update list set action = ? where id = ?', [fields[0], id])
+        if (fields[1] && !fields[0]) return this.getQueryPromise('update list set completed = ? where id = ?', [fields[1], id])
+        if (fields[1] && fields[0]) return this.getQueryPromise('update list set action = ? , completed = ? where id = ?', [...fields, id])
     }
 
-    static createAction(action, completed) {
+    static createAction(action, completed= 0) {
         return this.getQueryPromise('insert into list (action, completed) value (?,?)', [action, completed])
     }
 
